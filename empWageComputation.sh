@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 isAbsent=0
 isFullday=1
 isParttime=2
@@ -37,9 +37,11 @@ do
 	emp_check=$((RANDOM%3))
 	daily_employee_wage="$( salary_per_day $emp_check)"
 	totalWage=$((totalWage+daily_employee_wage))
+	dailyWage[$total_working_days]=$daily_employee_wage
 	(( total_working_days++ ))
 	total_working_hours="$( getWorkHours $emp_check )"
 done
 echo "Total wage of the employee in a month is $totalWage"
 echo "Total working days are $total_working_days"
 echo "Total working hours are $total_working_hours"
+echo "Daily wages of employee are as follows ${dailyWage[@]}"
