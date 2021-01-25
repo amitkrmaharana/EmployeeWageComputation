@@ -8,12 +8,8 @@ part_time_hour=8
 daily_employee_wage=0
 echo "Welcome to Employee Wage Computation Program"
 emp_check=$((RANDOM%3))
-if [ $emp_check -eq $isFullday ]
-then
-	daily_employee_wage=$((wage_per_hour*full_day_hour))
-elif [ $emp_check -eq $isParttime ]
-then
-	daily_employee_wage=$((wage_per_hour*part_time_hour))
-fi
+case $emp_check in
+	$isFullday)daily_employee_wage=$((wage_per_hour*full_day_hour));;
+	$isParttime)daily_employee_wage=$((wage_per_hour*part_time_hour));;
+esac
 echo "Today's employee wage is $daily_employee_wage"
-
